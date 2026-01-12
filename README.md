@@ -1,66 +1,44 @@
 # LISN Website Factory
 
-Dokumentation, Prompts und Templates fuer die LISN Website-Produktion.
-
-## Struktur
-
-```
-lisn-website-factory/
-├── _system/              # Dokumentation & Scripts
-│   ├── MASTER_PROMPT.md  # Haupt-Prompt fuer Claude
-│   ├── COMPONENT_LIBRARY.md
-│   ├── WORKFLOW.md
-│   ├── SERVER_SETUP.md
-│   ├── BREVO_INTEGRATION.md
-│   ├── KLARO_COOKIE_BANNER.md
-│   ├── BRAND_VOICE.md
-│   ├── scripts/          # Shell-Scripts fuer Projektverwaltung
-│   └── templates/        # Code-Templates (Klaro, etc.)
-└── _template/            # Basis-Template fuer neue Projekte
-```
-
-## Hauptdokumentationen
-
-| Datei | Beschreibung |
-|-------|--------------|
-| `MASTER_PROMPT.md` | Kompletter Prompt fuer Claude - Tech Stack, Komponenten, Workflows |
-| `COMPONENT_LIBRARY.md` | Alle verfuegbaren UI-Komponenten |
-| `WORKFLOW.md` | Schritt-fuer-Schritt Projekt-Workflow |
-| `SERVER_SETUP.md` | Server-Konfiguration und Deployment |
-| `BREVO_INTEGRATION.md` | E-Mail/CRM Integration mit Brevo |
-| `KLARO_COOKIE_BANNER.md` | DSGVO-konformer Cookie-Banner |
-| `BRAND_VOICE.md` | LISN Markenstimme und Tonalitaet |
-
-## Scripts
-
-```bash
-# Neues Projekt anlegen
-./scripts/new-project.sh [kunde-slug]
-
-# Projekt archivieren
-./scripts/archive-project.sh [kunde-slug]
-
-# Projekt-Ordner bereinigen
-./scripts/cleanup-project.sh [kunde-slug]
-
-# Backup wiederherstellen
-./scripts/restore-backup.sh [kunde-slug] [backup-file]
-```
-
-## Server
-
-- **Host:** 46.224.27.249
-- **Pfad:** `/var/www/staging/_system/`
-- **Auto-Deploy:** Push zu `main` deployt automatisch
-
-## Deployment
-
-Push zu `main` Branch triggert automatisch:
-1. rsync Dateien zum Server
-2. Berechtigungen setzen
+> High-Performance Website Generator basierend auf Astro, Tailwind und Alpine.js.
 
 ---
 
-**LISN GmbH** - Digital Marketing Agentur
+## 🚀 Quick Start
 
-*Stand: 2026-01-12*
+**Neues Projekt anlegen:**
+
+```bash
+# Auf dem Server (46.224.27.249)
+cd /var/www/staging
+./_system/scripts/new-project.sh [kunde-slug]
+```
+
+👉 **[Ausführliche Anleitung lesen](_system/01_QUICK_START.md)**
+
+---
+
+## 📚 Dokumentation
+
+Die gesamte Dokumentation befindet sich im `_system/` Ordner:
+
+- **[00_INDEX.md](_system/00_INDEX.md)** - Startseite der Dokumentation
+- **[guides/](_system/guides/)** - Komponenten, Formulare, Cookie-Banner
+- **[deployment/](_system/deployment/)** - Server-Setup & PM2
+- **[reference/](_system/reference/)** - Brand Voice, Troubleshooting
+
+---
+
+## 🛠️ Repository Struktur
+
+```
+.
+├── _system/          # Docs, Scripts, Templates
+├── _template/        # Astro Basis-Projekt (WIP)
+├── .github/          # CI/CD Workflows
+└── README.md         # Diese Datei
+```
+
+---
+
+*LISN GmbH - Internal Use Only*
