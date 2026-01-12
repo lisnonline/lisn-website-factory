@@ -2411,9 +2411,9 @@ include /etc/nginx/snippets/security-headers.conf;
 **Deploy-User:** deploy (fuer GitHub Actions, eingeschraenkte Rechte)
 **Root:** Nur fuer Administration
 
-### Brevo IP-Whitelist
+### Brevo IP-Whitelist ✅
 
-Server-IP muss in Brevo autorisiert sein:
+Server-IP ist in Brevo autorisiert (Stand: 2026-01-12):
 - IPv4: 46.224.27.249
 - IPv6: 2a01:4f8:1c1f:8fc6::1
 
