@@ -2341,3 +2341,89 @@ Zum Testen ohne Blocker:
 - Anderer Browser
 - Oder: Blocker temporaer deaktivieren
 
+
+
+═══════════════════════════════════════════════════════════════════
+## SICHERHEIT - WICHTIGE REGELN (UPDATE 2026-01-12)
+═══════════════════════════════════════════════════════════════════
+
+### .env Dateien - KRITISCH!
+
+**.env Dateien enthalten sensible Daten (API-Keys, Passwoerter).**
+
+**Permissions IMMER auf 600 setzen:**
+```bash
+chmod 600 .env
+```
+
+**Nach jedem Build pruefen:**
+```bash
+ls -la .env
+# Erwartet: -rw------- (nur Owner kann lesen)
+```
+
+**NIEMALS:**
+- .env auf GitHub pushen (in .gitignore!)
+- .env mit falschen Permissions (644 = jeder kann lesen)
+- API-Keys in Code hardcoden
+
+**.env.example Template:**
+```env
+# Brevo API (E-Mail)
+BREVO_API_KEY=your_api_key_here
+
+# Meta Pixel (optional)
+META_PIXEL_ID=
+META_ACCESS_TOKEN=
+
+# Site Config
+SITE_URL=https://firmenname.at
+```
+
+### Nginx Security Headers
+
+Alle Sites MUESSEN Security Headers haben. Snippet inkludieren:
+
+```nginx
+include /etc/nginx/snippets/security-headers.conf;
+```
+
+**Enthaltene Headers:**
+- X-Frame-Options: SAMEORIGIN (Clickjacking-Schutz)
+- X-Content-Type-Options: nosniff (MIME-Sniffing verhindern)
+- X-XSS-Protection: 1; mode=block (XSS-Filter)
+- Referrer-Policy: strict-origin-when-cross-origin
+
+### Backups
+
+**Automatische Backups:** Taeglich 03:00 Uhr via Cron
+**Speicherort:** /var/www/backups/
+**Retention:** 7 Tage
+
+**Manuelles Backup vor grossen Aenderungen:**
+```bash
+/usr/local/bin/lisn-backup.sh
+```
+
+### Server-Zugriff
+
+**SSH:** Nur mit SSH-Key (Password-Auth deaktiviert)
+**Deploy-User:** deploy (fuer GitHub Actions, eingeschraenkte Rechte)
+**Root:** Nur fuer Administration
+
+### Brevo IP-Whitelist
+
+Server-IP muss in Brevo autorisiert sein:
+- IPv4: 46.224.27.249
+- IPv6: 2a01:4f8:1c1f:8fc6::1
+
+Einstellungen: https://app.brevo.com/security/authorised_ips
+
+### Checkliste bei neuem Projekt
+
+- [ ] .env mit chmod 600 erstellt
+- [ ] .env in .gitignore
+- [ ] Nginx Security Headers aktiv
+- [ ] SSL-Zertifikat eingerichtet
+- [ ] Backup nach Go-Live erstellt
+

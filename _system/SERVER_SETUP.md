@@ -870,3 +870,129 @@ server {
 }
 ```
 
+
+
+═══════════════════════════════════════════════════════════════════
+## SECURITY STATUS (UPDATE 2026-01-12)
+═══════════════════════════════════════════════════════════════════
+
+### Aktuelle Sicherheitskonfiguration
+
+| Bereich | Status | Details |
+|---------|--------|---------|
+| SSH | Sicher | Password-Auth deaktiviert, nur SSH-Keys |
+| Firewall (ufw) | Aktiv | Nur 22/80/443 offen |
+| Fail2ban | Aktiv | SSH (24h ban), Nginx geschuetzt |
+| Security Headers | Aktiv | X-Frame, X-Content-Type, etc. |
+| SSL | Aktiv | Let's Encrypt, Auto-Renewal |
+| Backups | Automatisch | Taeglich 03:00 Uhr, 7 Tage Retention |
+| Auto-Updates | Aktiv | unattended-upgrades fuer Security-Patches |
+
+### SSH-Konfiguration
+
+**Datei:** /etc/ssh/sshd_config.d/security.conf
+```
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+```
+
+### Fail2ban-Konfiguration
+
+**Datei:** /etc/fail2ban/jail.local
+```ini
+[DEFAULT]
+bantime = 1h
+findtime = 10m
+maxretry = 5
+
+[sshd]
+enabled = true
+maxretry = 3
+bantime = 24h
+
+[nginx-http-auth]
+enabled = true
+maxretry = 3
+```
+
+**Status pruefen:**
+```bash
+fail2ban-client status
+fail2ban-client status sshd
+```
+
+### Nginx Security Headers
+
+**Datei:** /etc/nginx/snippets/security-headers.conf
+```nginx
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-XSS-Protection "1; mode=block" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
+```
+
+**In jeder Site inkludieren:**
+```nginx
+server {
+    server_name example.com;
+    include /etc/nginx/snippets/security-headers.conf;
+    # ...
+}
+```
+
+### Automatische Backups
+
+**Script:** /usr/local/bin/lisn-backup.sh
+**Cron:** 0 3 * * * (taeglich 03:00 Uhr)
+**Log:** /var/log/lisn-backup.log
+**Retention:** 7 Tage
+
+**Manuell ausfuehren:**
+```bash
+/usr/local/bin/lisn-backup.sh
+```
+
+### Deploy-User
+
+Dedizierter User fuer GitHub Actions Deployments:
+
+**User:** deploy
+**Home:** /home/deploy
+**Shell:** /bin/bash
+**SSH-Key:** /home/deploy/.ssh/id_ed25519
+
+**Sudo-Rechte (eingeschraenkt):**
+```
+deploy ALL=(root) NOPASSWD: /usr/bin/pm2 restart lisn-dashboard
+deploy ALL=(root) NOPASSWD: /bin/chown -R www-data:www-data /var/www/staging/_system/
+deploy ALL=(root) NOPASSWD: /bin/chown -R www-data:www-data /var/www/staging/_template/
+deploy ALL=(root) NOPASSWD: /bin/chmod -R 755 /var/www/staging/_system/
+deploy ALL=(root) NOPASSWD: /bin/chmod -R 755 /var/www/staging/_template/
+```
+
+### .env Dateien
+
+**WICHTIG:** Alle .env Dateien muessen Permission 600 haben!
+
+```bash
+# Pruefen
+find /var/www -name '.env' -exec ls -la {} \;
+
+# Korrigieren
+find /var/www -name '.env' -exec chmod 600 {} \;
+```
+
+### Security-Audit
+
+Vollstaendige Audit-Checkliste: siehe customer-vps-dashboard/docs/SECURITY_AUDIT_CHECKLIST.md
+
+**Quick-Check:**
+```bash
+echo "=== QUICK SECURITY CHECK ===" && \
+echo "SSH:" && sshd -T 2>/dev/null | grep passwordauthentication && \
+echo "Firewall:" && ufw status | head -1 && \
+echo "Fail2ban:" && systemctl is-active fail2ban && \
+echo "Headers:" && curl -sI https://dashboard.lisn-agentur.com | grep X-Frame
+```
+
