@@ -62,3 +62,5 @@ Push zu `main` Branch triggert automatisch:
 ---
 
 **LISN GmbH** - Digital Marketing Agentur
+
+*Stand: 2026-01-12*
