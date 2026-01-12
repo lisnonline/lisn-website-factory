@@ -8,9 +8,16 @@ NEUES LISN-KUNDENPROJEKT STARTEN
 Server: 46.224.27.249 (Hetzner VPS)
 User: root
 
-WICHTIG: Lies zuerst die Master-Dokumentation:
-```
-ssh root@46.224.27.249 "cat /var/www/staging/_system/MASTER_PROMPT.md"
+WICHTIG: Lies zuerst die Core-Dokumentation (in dieser Reihenfolge):
+```bash
+# 1. Übersicht aller Dokumentationen
+ssh root@46.224.27.249 "cat /var/www/staging/_system/00_INDEX.md"
+
+# 2. Kurzanleitung für neues Projekt
+ssh root@46.224.27.249 "cat /var/www/staging/_system/01_QUICK_START.md"
+
+# 3. Unveränderliche Kern-Regeln (Tech Stack, Naming, etc.)
+ssh root@46.224.27.249 "cat /var/www/staging/_system/02_CORE_RULES.md"
 ```
 
 ═══════════════════════════════════════════════════════════════════
@@ -98,9 +105,9 @@ Erstelle basierend auf den obigen Informationen ein komplettes Astro-Projekt auf
 
 2. **Development**
    - Layouts erstellen
-   - Components erstellen (siehe COMPONENT_LIBRARY.md)
+   - Components erstellen (siehe guides/astro-components.md)
    - Seiten erstellen
-   - Formular-API einrichten (siehe BREVO_INTEGRATION.md)
+   - Formular-API einrichten (siehe guides/brevo-forms.md)
 
 3. **Content**
    - config.json mit Firmeninfos befüllen
@@ -128,12 +135,22 @@ WICHTIG - BRAND VOICE
 ═══════════════════════════════════════════════════════════════════
 
 Alle Texte müssen folgende Kriterien erfüllen:
-✅ Direkt und ehrlich (keine Marketing-Floskeln)
-✅ Auf Augenhöhe (Unternehmer für Unternehmer)
-✅ Konkrete Zahlen statt Superlative
-✅ Österreichisches Deutsch
-✅ Sie-Form
+- Direkt und ehrlich (keine Marketing-Floskeln)
+- Auf Augenhöhe (Unternehmer für Unternehmer)
+- Konkrete Zahlen statt Superlative
+- Österreichisches Deutsch
+- Sie-Form
 
-Details siehe: /var/www/staging/_system/BRAND_VOICE.md
+Details siehe: /var/www/staging/_system/reference/brand-voice.md
+
+═══════════════════════════════════════════════════════════════════
+WEITERE GUIDES (bei Bedarf)
+═══════════════════════════════════════════════════════════════════
+
+- Components: /var/www/staging/_system/guides/astro-components.md
+- Formulare: /var/www/staging/_system/guides/brevo-forms.md
+- Cookie Banner: /var/www/staging/_system/guides/klaro-consent.md
+- Alpine.js: /var/www/staging/_system/guides/alpine-tips.md
+- Workflow: /var/www/staging/_system/reference/workflow-checklist.md
 
 ═══════════════════════════════════════════════════════════════════
