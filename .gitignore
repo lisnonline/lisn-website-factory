@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archives
+*.tar.gz
+*.zip
+
+# Node (falls Template erweitert wird)
+node_modules/
+dist/
+.astro/
+
+# Logs
+*.log

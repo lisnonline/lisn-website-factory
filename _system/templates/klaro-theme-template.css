@@ -1,0 +1,391 @@
+/* Klaro Cookie Banner - FoFa Haus & Bad Theme */
+
+.klaro {
+    --font-family: 'Noto Sans', system-ui, sans-serif;
+    --title-font-family: 'Noto Serif', Georgia, serif;
+    --font-size: 14px;
+    --green1: #1e3a5f;
+    --green2: #2a4a73;
+    --green3: #3a5a83;
+    --blue1: #1e3a5f;
+    --blue2: #2a4a73;
+    --border-radius: 12px;
+    --notice-max-width: 440px;
+}
+
+/* ============================================
+   NOTICE BANNER
+   ============================================ */
+.klaro .cookie-notice {
+    background: #ffffff !important;
+    color: #374151 !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12) !important;
+    padding: 20px 24px !important;
+    max-width: 440px !important;
+    border-radius: 16px !important;
+}
+
+.klaro .cookie-notice .cn-body {
+    margin-bottom: 16px !important;
+}
+
+.klaro .cookie-notice .cn-body p {
+    color: #4b5563 !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+}
+
+/* Banner Buttons Container - CSS Grid */
+.klaro .cookie-notice .cn-buttons {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 10px !important;
+}
+
+/* Alle Buttons Basis-Styling */
+.klaro .cookie-notice .cn-buttons .cm-btn {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+}
+
+/* Einstellungen Link - ERSTE ZEILE, volle Breite */
+.klaro .cookie-notice .cn-buttons .cm-btn-info,
+.klaro .cookie-notice .cn-buttons .cm-link,
+.klaro .cookie-notice .cn-buttons a.cm-link {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #6b7280 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    text-decoration: underline !important;
+    padding: 0 0 4px 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+.klaro .cookie-notice .cn-buttons .cm-btn-info:hover,
+.klaro .cookie-notice .cn-buttons .cm-link:hover {
+    color: #1e3a5f !important;
+    background: transparent !important;
+}
+
+/* Alle akzeptieren - ZWEITE ZEILE, links */
+.klaro .cookie-notice .cn-buttons .cm-btn-success {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    background: #1e3a5f !important;
+    color: #ffffff !important;
+    border: 2px solid #1e3a5f !important;
+}
+
+.klaro .cookie-notice .cn-buttons .cm-btn-success:hover {
+    background: #2a4a73 !important;
+    border-color: #2a4a73 !important;
+}
+
+/* Alle ablehnen - ZWEITE ZEILE, rechts */
+.klaro .cookie-notice .cn-buttons .cm-btn-danger {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    background: #ffffff !important;
+    color: #1e3a5f !important;
+    border: 2px solid #1e3a5f !important;
+}
+
+.klaro .cookie-notice .cn-buttons .cm-btn-danger:hover {
+    background: #f3f4f6 !important;
+}
+
+/* ============================================
+   MODAL - Komplett Light Theme
+   ============================================ */
+.klaro .cookie-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 100000 !important;
+    overflow: hidden !important;
+}
+
+/* Body scroll lock wenn Modal offen */
+body.klaro-modal-open {
+    overflow: hidden !important;
+}
+
+.klaro .cookie-modal .cm-bg {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    touch-action: none !important;
+}
+
+.klaro .cookie-modal .cm-modal {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    max-width: 600px !important;
+    width: calc(100% - 40px) !important;
+    max-height: calc(100vh - 80px) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Modal Body scrollbar */
+.klaro .cookie-modal .cm-body {
+    background: #ffffff !important;
+    padding: 20px 24px !important;
+    overflow-y: auto !important;
+    flex: 1 !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* Modal Header - HELL */
+.klaro .cookie-modal .cm-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    padding: 20px 24px !important;
+    flex-shrink: 0 !important;
+}
+
+.klaro .cookie-modal .cm-header h1,
+.klaro .cookie-modal .cm-header h1.title,
+.klaro .cookie-modal .cm-header .title {
+    color: #1e3a5f !important;
+    font-family: 'Noto Serif', Georgia, serif !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin: 0 0 8px 0 !important;
+}
+
+/* Modal Beschreibung im Header */
+.klaro .cookie-modal .cm-header p,
+.klaro .cookie-modal .cm-header .cm-header-text {
+    color: #4b5563 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+.klaro .cookie-modal .cm-header a {
+    color: #1e3a5f !important;
+}
+
+/* Modal Body */
+.klaro .cookie-modal .cm-body {
+    background: #ffffff !important;
+    padding: 20px 24px !important;
+    overflow-y: auto !important;
+}
+
+/* Service Items */
+.klaro .cookie-modal .cm-list-item {
+    background: #f9fafb !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Service Titel - GUT LESBAR */
+.klaro .cookie-modal .cm-list-item .cm-list-title,
+.klaro .cookie-modal .cm-list-item .cm-list-title span,
+.klaro .cookie-modal .cm-list-item .cm-list-title-title {
+    color: #1e3a5f !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+/* Required Badge */
+.klaro .cookie-modal .cm-list-item .required {
+    background: #e5e7eb !important;
+    color: #4b5563 !important;
+    font-size: 11px !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    margin-left: 8px !important;
+}
+
+/* Service Beschreibung */
+.klaro .cookie-modal .cm-list-item .cm-list-description,
+.klaro .cookie-modal .cm-list-item p {
+    color: #4b5563 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-top: 6px !important;
+}
+
+/* Zweck Label */
+.klaro .cookie-modal .cm-list-item .purposes {
+    color: #d4a853 !important;
+    font-size: 12px !important;
+    margin-top: 4px !important;
+}
+
+/* ============================================
+   TOGGLE SWITCHES
+   ============================================ */
+.klaro .cm-list-label .slider {
+    background-color: #d1d5db !important;
+}
+
+.klaro .cm-list-input:checked + .cm-list-label .slider {
+    background-color: #1e3a5f !important;
+}
+
+/* ============================================
+   MODAL FOOTER - Größere Buttons
+   ============================================ */
+.klaro .cookie-modal .cm-footer {
+    background: #f9fafb !important;
+    border-top: 1px solid #e5e7eb !important;
+    padding: 16px 24px !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn-decline {
+    background: #ffffff !important;
+    color: #6b7280 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn-decline:hover {
+    background: #f3f4f6 !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn-accept {
+    background: #ffffff !important;
+    color: #1e3a5f !important;
+    border: 2px solid #1e3a5f !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn-accept:hover {
+    background: #f3f4f6 !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn-accept-all,
+.klaro .cookie-modal .cm-footer .cm-btn-success {
+    background: #1e3a5f !important;
+    color: #ffffff !important;
+    border: 2px solid #1e3a5f !important;
+}
+
+.klaro .cookie-modal .cm-footer .cm-btn-accept-all:hover,
+.klaro .cookie-modal .cm-footer .cm-btn-success:hover {
+    background: #2a4a73 !important;
+    border-color: #2a4a73 !important;
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 600px) {
+    /* Notice Banner Mobile */
+    .klaro .cookie-notice {
+        max-width: calc(100% - 24px) !important;
+        margin: 12px !important;
+        padding: 16px 20px !important;
+    }
+
+    /* Mobile: Gleiche Grid-Struktur wie Desktop */
+    .klaro .cookie-notice .cn-buttons {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 10px !important;
+    }
+
+    /* Einstellungen - erste Zeile, volle Breite */
+    .klaro .cookie-notice .cn-buttons .cm-btn-info,
+    .klaro .cookie-notice .cn-buttons .cm-link {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+    }
+
+    /* Alle akzeptieren - zweite Zeile, links */
+    .klaro .cookie-notice .cn-buttons .cm-btn-success {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+    }
+
+    /* Alle ablehnen - zweite Zeile, rechts */
+    .klaro .cookie-notice .cn-buttons .cm-btn-danger {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+    }
+
+    /* Modal Mobile */
+    .klaro .cookie-modal .cm-modal {
+        width: calc(100% - 24px) !important;
+        max-height: calc(100vh - 48px) !important;
+        max-height: calc(100dvh - 48px) !important;
+        border-radius: 12px !important;
+    }
+
+    .klaro .cookie-modal .cm-header {
+        padding: 16px 20px !important;
+    }
+
+    .klaro .cookie-modal .cm-header h1,
+    .klaro .cookie-modal .cm-header .title {
+        font-size: 18px !important;
+    }
+
+    .klaro .cookie-modal .cm-body {
+        padding: 16px 20px !important;
+    }
+
+    .klaro .cookie-modal .cm-list-item {
+        padding: 12px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .klaro .cookie-modal .cm-footer {
+        padding: 12px 16px !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .klaro .cookie-modal .cm-footer .cm-btn {
+        padding: 10px 12px !important;
+        font-size: 13px !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+}
+
+/* Touch-Verhalten für Modal Backdrop */
+.klaro .cookie-modal .cm-bg {
+    touch-action: none !important;
+    -webkit-overflow-scrolling: none !important;
+}
