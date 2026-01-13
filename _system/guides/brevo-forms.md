@@ -108,9 +108,10 @@ export const POST: APIRoute = async ({ request }) => {
         </head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
           <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+            <!-- WICHTIG: Inline color für E-Mail-Client-Kompatibilität -->
             <h2 style="color: #1e40af;">Vielen Dank für Ihre Anfrage!</h2>
 
-            <p>Hallo ${formData.firstname},</p>
+            <p style="color: #333333;">Hallo ${formData.firstname},</p>
 
             <p>wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.</p>
 
@@ -384,6 +385,20 @@ console.log('Brevo response:', await addContactResponse.text());
 - Plan upgraden
 - Rate-Limiting einbauen
 
+### Problem: E-Mail-Text nicht lesbar (Light Mode)
+
+**Symptom:** Header-Text wie "Vielen Dank für Ihre Anfrage!" ist im Light Mode nicht sichtbar (weiß auf weiß).
+
+**Ursache:** E-Mail-Clients entfernen CSS `background`/`background-image`, aber behalten `color: white`.
+
+**Lösung:** Inline-Styles direkt auf Text-Elementen setzen:
+```html
+<h1 style="color: #ffffff;">Text hier</h1>
+<p style="color: #ffffff;">Mehr Text</p>
+```
+
+→ Siehe ausführlich: [E-MAIL STYLING BEST PRACTICES](#e-mail-styling-best-practices-update-2026-01-13)
+
 ═══════════════════════════════════════════════════════════════════
 ## SICHERHEIT
 ═══════════════════════════════════════════════════════════════════
@@ -579,5 +594,66 @@ export const POST: APIRoute = async ({ request }) => {
 ```env
 BREVO_API_KEY=xkeysib-xxxxx...
 NOTIFICATION_EMAIL=office@kunde.at
+```
+
+═══════════════════════════════════════════════════════════════════
+## E-MAIL STYLING BEST PRACTICES (UPDATE 2026-01-13)
+═══════════════════════════════════════════════════════════════════
+
+### Problem: Text nicht lesbar im Light Mode
+
+Viele E-Mail-Clients (Gmail, Outlook, Apple Mail) im **Light Mode** entfernen oder ignorieren CSS `background` und `background-image` Eigenschaften aus Sicherheitsgründen. Die Textfarbe (`color: white`) bleibt jedoch erhalten.
+
+**Ergebnis:** Weißer Text auf weißem Hintergrund = nicht lesbar!
+
+### Lösung: Immer Inline-Styles verwenden
+
+**❌ Falsch (funktioniert nicht zuverlässig):**
+```html
+<style>
+  .header { background: linear-gradient(135deg, #3750be, #2a3d91); color: white; }
+  .header h1 { margin: 0; }
+</style>
+
+<div class="header">
+  <h1>Vielen Dank für Ihre Anfrage!</h1>
+  <p>Wir melden uns schnellstmöglich bei Ihnen.</p>
+</div>
+```
+
+**✅ Richtig (E-Mail-Client-kompatibel):**
+```html
+<div class="header" style="background-color: #3750be;">
+  <h1 style="color: #ffffff;">Vielen Dank für Ihre Anfrage!</h1>
+  <p style="color: #ffffff;">Wir melden uns schnellstmöglich bei Ihnen.</p>
+</div>
+```
+
+### Wichtige Regeln für E-Mail-Templates
+
+1. **Immer `background-color` statt `background-image`/`gradient`**
+   - Gradienten werden von vielen Clients nicht unterstützt
+   - Solide Farbe als Fallback setzen
+
+2. **Textfarben IMMER inline auf dem Element selbst**
+   - Nicht auf Parent-Container verlassen
+   - Jedes `<h1>`, `<p>`, `<span>` mit eigenem `style="color: #xxx"`
+
+3. **Kritische Styles doppelt setzen**
+   - Im `<style>` Block UND als inline-style
+   - Inline gewinnt bei Konflikten
+
+4. **Testen in verschiedenen Clients**
+   - Gmail (Web + App)
+   - Apple Mail (Light + Dark Mode)
+   - Outlook (Desktop + Web)
+
+### Beispiel: Korrekter E-Mail Header
+
+```html
+<div class="header" style="background-color: #3750be; color: #ffffff; padding: 40px 30px; text-align: center;">
+  <h1 style="color: #ffffff; margin: 0 0 10px 0; font-size: 28px;">Vielen Dank für Ihre Anfrage!</h1>
+  <p style="color: #ffffff; margin: 0; opacity: 0.9;">Wir melden uns schnellstmöglich bei Ihnen.</p>
+</div>
 ```
 

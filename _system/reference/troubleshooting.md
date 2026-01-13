@@ -64,6 +64,12 @@ systemctl reload nginx
 - Läuft das Projekt unter einem Subpfad?
 - Siehe [Base URL Guide](../guides/base-url.md) für Client-Side Fetch Fix.
 
+### E-Mail-Text nicht lesbar (Light Mode)
+- Weißer Text auf weißem Hintergrund im E-Mail-Client?
+- **Ursache:** E-Mail-Clients entfernen CSS `background`, behalten aber `color: white`
+- **Lösung:** Inline-Styles auf jedem Text-Element: `<h1 style="color: #ffffff;">`
+- Siehe [Brevo Forms Guide - E-Mail Styling](../guides/brevo-forms.md#e-mail-styling-best-practices-update-2026-01-13)
+
 ---
 
 ## 💻 Frontend (Astro/Alpine)
