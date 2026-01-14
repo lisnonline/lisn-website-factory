@@ -8,6 +8,8 @@
 
 Neues Projekt starten? → [01_QUICK_START.md](./01_QUICK_START.md)
 
+Bestehendes Projekt ändern? → [guides/project-updates.md](./guides/project-updates.md)
+
 ---
 
 ## 📁 Dokumentations-Struktur
@@ -25,6 +27,7 @@ Neues Projekt starten? → [01_QUICK_START.md](./01_QUICK_START.md)
 
 | Datei | Beschreibung |
 |-------|--------------|
+| [guides/project-updates.md](./guides/project-updates.md) | **Bestehende Projekte ändern (Bilder, Text, Deploy)** |
 | [guides/astro-components.md](./guides/astro-components.md) | Standard UI-Komponenten |
 | [guides/brevo-forms.md](./guides/brevo-forms.md) | Formular-Backend mit Brevo API |
 | [guides/klaro-consent.md](./guides/klaro-consent.md) | DSGVO Cookie Banner Setup |
@@ -86,4 +89,4 @@ Neues Projekt starten? → [01_QUICK_START.md](./01_QUICK_START.md)
 
 ---
 
-*Stand: 2026-01-12*
+*Stand: 2026-01-14*
