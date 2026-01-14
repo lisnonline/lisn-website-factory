@@ -23,7 +23,7 @@
 ## 2. Installierte Software
 
 ### Development Tools
-- **Node.js:** v20.19.6 (LTS)
+- **Node.js:** v24.13.0 (LTS)
 - **pnpm:** 10.27.0
 - **git:** 2.43.0
 

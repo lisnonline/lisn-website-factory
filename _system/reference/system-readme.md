@@ -30,8 +30,8 @@ Dieses System ist eine vollautomatisierte Website-Factory für LISN-Kundenprojek
 
 **Software:**
 - OS: Ubuntu 24.04.3 LTS
-- Node.js: v20.19.6
-- npm: 10.8.2
+- Node.js: v24.13.0
+- npm: 11.6.2
 - pnpm: 10.27.0
 - Nginx: 1.24.0
 - Git: 2.43.0
@@ -459,6 +459,11 @@ SSH: root@46.224.27.249
 ═══════════════════════════════════════════════════════════════════
 ## CHANGELOG
 ═══════════════════════════════════════════════════════════════════
+
+**2026-01-14 - Node.js Upgrade (v1.1)**
+- Node.js v20.19.6 → v24.13.0 (LTS) wegen Security-Patch (async_hooks DoS)
+- npm 10.8.2 → 11.6.2
+- Kernel 6.8.0-71 → 6.8.0-90
 
 **2026-01-07 - Initial Setup (v1.0)**
 - Server aufgesetzt (Ubuntu 24.04.3 LTS)

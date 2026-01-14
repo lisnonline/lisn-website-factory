@@ -48,7 +48,7 @@ pm2 jlist
 ### 1.3 Server-Ressourcen
 ```bash
 # Verfügbar auf Server
-Node.js: v20.19.6
+Node.js: v24.13.0
 PM2: 6.0.14
 pnpm: 10.27.0
 Freier RAM: ~2.5GB
