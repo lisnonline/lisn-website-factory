@@ -68,6 +68,18 @@ Bestehendes Projekt ändern? → [guides/project-updates.md](./guides/project-up
 
 ---
 
+### 🤖 Claude Code Commands
+
+Slash Commands für Claude Code zur Projekt-Verwaltung.
+Siehe [commands/README.md](./commands/README.md) für Installation.
+
+| Command | Beschreibung |
+|---------|--------------|
+| `/lisn-update` | Änderungen an bestehendem Projekt |
+| `/lisn-newproject` | Neues Projekt erstellen |
+
+---
+
 ### 📦 Templates
 
 | Datei | Beschreibung |
